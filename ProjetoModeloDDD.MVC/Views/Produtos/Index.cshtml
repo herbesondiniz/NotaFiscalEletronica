@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ProjetoModeloDDD.MVC.ViewModels.ProdutoViewModel>
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Disponivel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente.Nome)
+        </th>
+        <th></th>
+    </tr>
+
+
+    @{int indice = 0;}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                <span class="conteudo_decimal" id="conteudo_decimal_@indice">
+                    R$ @Html.DisplayFor(modelItem => item.Valor)
+                </span>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Disponivel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Nome)
+            </td>
+            <td>                
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProdutoId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ProdutoId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProdutoId })
+            </td>
+        </tr>
+        { indice = indice + 1; }
+    }
+
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        $('.conteudo_decimal').each(function (index, element) {            
+            $('#conteudo_decimal_'+index).html(element.innerHTML.replace(".", ","));
+        });
+
+    </script>>
+}

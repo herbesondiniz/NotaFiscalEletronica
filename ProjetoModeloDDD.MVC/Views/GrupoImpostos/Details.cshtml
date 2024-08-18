@@ -1,0 +1,116 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.GrupoImpostosViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalhes do Grupo</h2>
+
+<div>
+    <hr />  
+        <dl class="dl-horizontal">        
+            <dt>
+                @Html.DisplayName("Nome do Grupo")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Descricao)
+            </dd>
+
+            <dt>
+                @Html.DisplayName("Tipo do Grupo")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TipoGrupoImpostos.Descricao)
+            </dd>
+            @if (Model.TipoServico != null)
+            {
+                <dt>
+                    @Html.DisplayName("Tipo de Serviço")
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TipoServico.Descricao)
+                </dd>
+            }
+        </dl>
+        <hr />
+        <table class="group-table" id="tabela" style="width:100%">
+            <caption style="text-align:center">Impostos aplicados para o grupo</caption>
+            <thead>
+                <tr>
+                    <th>@Html.DisplayName("CFOP")</th>
+                    <th>@Html.DisplayName("Origem")</th>
+                    @if (Model.TipoGrupoImpostos.Descricao.Equals("Produto"))
+                    {
+                        <th>@Html.DisplayName("ICMS - CSOSN")</th>
+                    }
+                    <th>@Html.DisplayName("PIS - %Aliq")</th>
+                    <th>@Html.DisplayName("PIS - %CSOSN")</th>
+                    <th>@Html.DisplayName("COFINS - %Aliq")</th>
+                    <th>@Html.DisplayName("COFINS - CSOSN")</th>
+                    @if (Model.TipoGrupoImpostos.Descricao.Equals("Serviço"))
+                    {
+                        <th>@Html.DisplayName("ISS - Aliq")</th>
+                    }
+
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.CFOPs)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CodigoCFOP)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Origem)
+                        </td>
+                        @if (Model.TipoGrupoImpostos.Descricao.Equals("Produto"))
+                        {
+                            <td>@Html.DisplayFor(modelItem => item.ICMSCSOSN)</td>
+
+                        }
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PISAliq)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PISCSOSN)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.COFINSAliq)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CONFINSCSOSN)
+                        </td>
+                        @if (Model.TipoGrupoImpostos.Descricao.Equals("Serviço"))
+                        {
+                            <td>@Html.DisplayFor(modelItem => item.ISSALiq)</td>
+
+                        }
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+</div>
+<hr />
+<p>
+    @Html.ActionLink("Alterar", "Edit", new { id = Model.GrupoImpostosId }, new { @class = "btn btn-warning" }) &nbsp;&nbsp;
+    @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-primary" })
+</p>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/Content/css")
+
+    <script>
+        $(document).ready(function () {
+            $('#tabela').DataTable();
+        });
+
+    </script>
+}

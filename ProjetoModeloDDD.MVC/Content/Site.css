@@ -1,0 +1,109 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+
+/* TABLE STYLING */
+.group-table caption {
+    background: #474a51;
+    color: #fff;
+    padding: 8px;
+    font-size: 1.4em;
+}
+
+.group-table {
+    border-top: 1px solid #ddd;
+    width: 100%;
+    /*  border:1px solid #ddd; */
+    /*    border-top: none;  */
+    border-collapse: collapse;
+    padding: 5px;
+    text-align: center;
+}
+
+    .group-table th {
+        /*  border:1px solid #ddd;
+    border-top: none; */
+        padding: 10px 5px;
+        font-weight: normal;
+        background: #474a51;
+        color: #fff;
+    }
+
+    .group-table td {
+        /*  border:1px solid #ddd; */
+        padding: 10px 2px;
+    }
+
+td:nth-child(3) {
+    /* min-width: 90px; */
+}
+
+.group-table th, .group-table td {
+    border-right: 1px solid #ddd;
+}
+
+    .group-table th:last-child, .group-table td:last-child {
+        border-right: none;
+    }
+
+.group-table tr:nth-child(odd) {
+    background: #f0f0f0;
+}
+
+#morning .group-table td:nth-child(3) {
+    background: #fff;
+}
+
+.group-table td.align-bottom {
+    vertical-align: bottom;
+    padding: 0;
+}
+
+.group-table td.align-top {
+    vertical-align: top;
+    padding: 0;
+}
+
+#morning .group-table td:nth-child(3), #afternoon .group-table td:nth-child(3), #evening .group-table td:nth-child(3) {
+    background: #fff;
+}
+.container-login {
+    width: 400px;
+    margin: 0 auto;
+}
+.titulo {
+    margin-bottom: 30px;
+    margin-left: 70px;
+    font-size: 30px;
+    /*text-transform:uppercase;*/
+}
+
+.jumbotron {
+    background: url("../Content/img/nfe.png");
+    width: 1150px;
+    height: 334px;
+    /*background-size: cover;*/
+}

@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Emissão de Nota Fiscal</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+           
+    
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Sistema de Emissão NF-e/NFC-e", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                @if (@Request.IsAuthenticated)
+                {
+
+                <ul class="nav navbar-nav">
+                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            1. Configurações
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("1.1 Empresa", "Index", "Empresas")</li>                            
+                            <li>@Html.ActionLink("1.2 Certificado Digital", "Index", "Home")</li>
+                            <li>@Html.ActionLink("1.3 Configuracão", "Index", "Configuracoes")</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            2. Cadastros
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("2.1 Grupo de Impostos", "Index", "GrupoImpostos")</li>
+                            <li>@Html.ActionLink("2.2 Produto/Serviço", "Index", "ProdutosServicos")</li>
+                            <li class="nav-divider"></li>
+                            <li>@Html.ActionLink("2.3 Destinatário - Pessoa Física ", "Index", "DestinatariosPessoaFisica")</li>
+                            <li>@Html.ActionLink("2.4 Destinatário - Pessoa Jurídica ", "Index", "DestinatariosPessoaJuridica")</li>                                                       
+                        </ul>
+                    </li> 
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            3. Gerenciar
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("3.1. Homologação - Nota Fiscal", "Index", "Home")</li>
+                            <li>@Html.ActionLink("3.1. Produção - Nota Fiscal ", "Index", "Home")</li>
+                        </ul>
+                    </li>                    
+                </ul>
+                    using (Html.BeginForm("LogOff", "Conta", FormMethod.Post, new { id = "logOffForm" }))
+                    {
+                        <ul class="nav navbar-nav navbar-right">                            
+                            <li><a href="#">Olá @User.Identity.Name</a></li>
+                            <li><a href="javascript:document.getElementById('logOffForm').submit()">Sair</a></li>
+                        </ul>
+                    }
+
+                }
+
+            </div>       
+        </div>
+        </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Next - Emissão de Nota Fiscal</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

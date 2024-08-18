@@ -1,0 +1,143 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.PessoaFisicaViewModel
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.DDDCelular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.DDDCelular)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Celular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Celular)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.DDDTelefoneFixo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.TelefoneFixo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Contato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Contato)
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnderecoPessoa.TipoEnderecoPessoa.Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnderecoPessoa.CEP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnderecoPessoa.CEP)
+        </dd>
+        <dt>
+            @Html.DisplayName("Tipo de Endereço")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EnderecoPessoa.TipoEnderecoPessoa.Tipo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EnderecoPessoa.Tipo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EnderecoPessoa.Tipo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EnderecoPessoa.Logradouro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnderecoPessoa.Logradouro)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EnderecoPessoa.Numero)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EnderecoPessoa.Numero)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EnderecoPessoa.Complemento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnderecoPessoa.Complemento)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EnderecoPessoa.Bairro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnderecoPessoa.Bairro)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EnderecoPessoa.Municipio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnderecoPessoa.Municipio)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EnderecoPessoa.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnderecoPessoa.UF)
+        </dd>
+    </dl>
+</div>
+<hr />
+<p>
+    @Html.ActionLink("Alterar", "Edit", new { id = Model.PessoaFisicaId }, new { @class = "btn btn-warning" }) 
+    @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-primary" })
+</p>

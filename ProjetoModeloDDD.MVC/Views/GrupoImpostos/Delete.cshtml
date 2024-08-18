@@ -1,0 +1,47 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.GrupoImpostosViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Grupo de Impostos</h2>
+
+<h3>Deseja realmente excluir?</h3>
+<div>    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoGrupoImpostosId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoGrupoImpostosId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoServicoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoServicoId)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Excluir" class="btn btn-danger" /> &nbsp;&nbsp;
+    @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-primary" })
+</div>
+    }
+</div>

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ProjetoModeloDDD.MVC.ViewModels.ProdutoServicoViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Produto/Serviço</h2>
+
+<p>
+    @Html.ActionLink("Novo", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="display" id="tabela" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Descrição")
+            </th>
+            <th>
+                @Html.DisplayName("Valor Unitário")
+            </th>
+            <th>
+                @Html.DisplayName("Grupo de Impostos")
+            </th>
+            <th>
+                @Html.DisplayName("Unidade Comercial")
+            </th>
+            <th>
+                @Html.DisplayName("Código NCM")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorUnitario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GrupoImpostos.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnidadeComercial.Unidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NCM.CodigoNCM)
+                </td>
+                <td>
+                    @Html.ActionLink("Alterar", "Edit", new { id = item.ProdutoServicoId }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.ProdutoServicoId }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Excluir", "Delete", new { id = item.ProdutoServicoId }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/Content/css")
+
+    <script>
+
+        $(document).ready(function () {
+            $('#tabela').DataTable({
+                "language": {
+                    "url": '../Scripts/Portuguese-Brasil.json'
+                }
+            } );
+        });
+
+    </script>
+}

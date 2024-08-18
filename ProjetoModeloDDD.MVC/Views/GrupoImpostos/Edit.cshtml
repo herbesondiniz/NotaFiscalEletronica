@@ -1,0 +1,84 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.GrupoImpostosViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Grupo de Impostos</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.GrupoImpostosId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Tipo", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("TipoGrupoImpostosId", null, new { @id = "TipoGrupoImpostosId" })
+                @Html.ValidationMessageFor(model => model.TipoGrupoImpostosId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @{
+            var style = (Model.TipoServico == null ? "display:none" : "display:block");
+        }
+        <div class="form-group" id="TipoServico" style=@style>
+            @Html.Label("Tipo de Serviço", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("TipoServicoId", null, new { @id = "TipoServicoDropdown" })
+                @Html.ValidationMessageFor(model => model.TipoServicoId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Gravar" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+<hr />
+<div>
+    @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-primary" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+    $("#TipoGrupoImpostosId").on("change", function () {
+    showValue($(this).val());
+})
+
+function showValue(val)
+{
+    if (val != 2)
+    {
+        $("#TipoServico").attr("style", "display:none");
+        return;
+    }
+
+    $.getJSON('@Url.Action("GetDropdownList", "GrupoImpostos")' + "?value=" + val, function (result) {
+        $("#TipoServicoDropdown").html(""); // makes select null before filling process
+            var data = result.data;
+        for (var i = 0; i < data.length; i++) {
+                $("#TipoServico").attr("style", "display:block");
+            $("#TipoServicoDropdown").append("<option value=" + data[i].TipoServicoId + ">"+ data[i].Descricao +"</option>")
+            }
+    })
+}
+
+    </script>
+}

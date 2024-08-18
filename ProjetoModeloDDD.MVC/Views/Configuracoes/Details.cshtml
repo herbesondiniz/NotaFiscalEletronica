@@ -1,0 +1,103 @@
+﻿@model ProjetoModeloDDD.MVC.ViewModels.ConfiguracaoViewModel
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes da Configuração</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NaturezaOperacao.CodigoNaturezaOperacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NaturezaOperacao.CodigoNaturezaOperacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NaturezaOperacao.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NaturezaOperacao.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DocumentoNotaFiscalId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DocumentoNotaFiscalId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroNF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroNF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DocumentoNotaFiscal.Ambiente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DocumentoNotaFiscal.Ambiente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DocumentoNotaFiscal.TipoDocumento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DocumentoNotaFiscal.TipoDocumento)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContabilidadeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContabilidadeId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Contabilidade.RazaoSocialContabilidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contabilidade.RazaoSocialContabilidade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Contabilidade.ContatoContabilidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contabilidade.ContatoContabilidade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Contabilidade.TelefoneContabilidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contabilidade.TelefoneContabilidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contabilidade.EmailContabilidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contabilidade.EmailContabilidade)
+        </dd>
+    </dl>
+</div>
+<hr />
+<p>
+    @Html.ActionLink("Alterar", "Edit", new { id = Model.ConfiguracaoNFId }, new { @class = "btn btn-warning" }) &nbsp;&nbsp;
+    @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-primary" })
+</p>
